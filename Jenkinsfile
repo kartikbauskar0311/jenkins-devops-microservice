@@ -41,22 +41,23 @@ pipeline {
 						sh "mvn failsafe:integration-test failsafe:verify"
 					}
 			}
+	}		
 				
-		post {
-			always {	
-				echo "It run always"
+				post {
+					always {	
+						echo "It run always"
+						}
+					success {
+						echo "It run on success"
+						}	
+					failure {
+						echo "it runs on failure"	
+					}	
+					//unstable 
+					//changed{
+						//echo "it run when there is change in the status of builds"
+					//}
 				}
-			success {
-				echo "It run on success"
-				}	
-			failure {
-				echo "it runs on failure"	
-			}	
-			//unstable 
-			//changed{
-				//echo "it run when there is change in the status of builds"
-			//}
-    }
-}
+    
 }
 
